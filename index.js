@@ -2985,6 +2985,10 @@ var _GLTFLoader = ( function () {
 			var input = animationDef.parameters !== undefined ? animationDef.parameters[ sampler.input ] : sampler.input;
 			var output = animationDef.parameters !== undefined ? animationDef.parameters[ sampler.output ] : sampler.output;
 
+			if (input < 0) {
+				continue;
+			}
+
 			pendingNodes.push( this.getDependency( 'node', name ) );
 			pendingInputAccessors.push( this.getDependency( 'accessor', input ) );
 			pendingOutputAccessors.push( this.getDependency( 'accessor', output ) );
